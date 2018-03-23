@@ -13,9 +13,10 @@ def write_letter1(player_name, guardian_name, team_name):
 	name = '_'.join(player_name.lower().split()) + '.txt'
 
 	with open(name, 'w') as file:
-		file.write('Dear ' + guardian_name + '\n')
+		file.write('Dear ' + guardian_name + ',\n')
 		file.write('We want to announce that ' + player_name + ' is chosen to be a member of ' + team_name + '\n')
 		file.write('Date and Time of first practice: TBA')
+
 
 
 dragons = []
