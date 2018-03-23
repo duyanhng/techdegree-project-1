@@ -28,11 +28,15 @@ raptors_exp = []
 
 if __name__ == '__main__':
 
+	# Read the data from csv file
 	with open('soccer_players.csv', newline='') as csvfile:
 		sp_reader = csv.DictReader(csvfile, delimiter = ',')
 		rows = list(sp_reader)
 
+
 		for row in rows:
+
+			# Devide experienced players into 3 teams
 			if row['Soccer Experience'] == 'YES':
 				teams = ['Dragons', 'Sharks', 'Raptors']
 				if len(dragons_exp) == 3:
@@ -52,6 +56,7 @@ if __name__ == '__main__':
 				elif chosen_team == 'Raptors':
 					raptors_exp.append([row['Name'], row['Height (inches)'], row['Soccer Experience'], row['Guardian Name(s)']] )
 
+			# Devide unexperienced players into 3 teams
 			elif row['Soccer Experience'] == 'NO':
 				teams = ['Dragons', 'Sharks', 'Raptors']
 				if len(dragons) == 3:
@@ -71,11 +76,13 @@ if __name__ == '__main__':
 				elif chosen_team == 'Raptors':
 					raptors.append([row['Name'], row['Height (inches)'], row['Soccer Experience'], row['Guardian Name(s)']] )		
 
+		# Member lists of 3 teams
 		dragons += dragons_exp
 		sharks += sharks_exp
 		raptors += raptors_exp
 
 
+		# Output teams.txt
 		write_file_clear('Dragons')
 		for player in dragons:
 			dragon_mem = ', '.join(player)
@@ -94,6 +101,7 @@ if __name__ == '__main__':
 			write_file(raptor_mem)	
 		write_file('')	
 
+		# Output 18 letters
 		for player in dragons:
 			player_name = player[0]
 			guardian_name = player[3]
