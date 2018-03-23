@@ -10,12 +10,13 @@ def write_file(thing):
 		file.write(thing + '\n')
 
 def write_letter1(player_name, guardian_name, team_name):
-	name = '_'.join(player_name.lower().split()) + '.txt'
+	# Set up lower case _ separated file names
+	name = player_name.lower().replace(' ', '_') + ".txt"
 
 	with open(name, 'w') as file:
-		file.write('Dear ' + guardian_name + ',\n')
-		file.write('We want to announce that ' + player_name + ' is chosen to be a member of ' + team_name + '\n')
-		file.write('Date and Time of first practice: TBA')
+		file.write('Dear {},\n\n'
+					'We want to announce that {} is chosen to be a member of {}\n'
+					'Date and Time of first practice: TBA'.format(guardian_name, player_name, team_name))
 
 
 
@@ -56,7 +57,7 @@ if __name__ == '__main__':
 				elif chosen_team == 'Raptors':
 					raptors_exp.append([row['Name'], row['Height (inches)'], row['Soccer Experience'], row['Guardian Name(s)']] )
 
-			# Devide unexperienced players into 3 teams
+			# Devide inexperienced players into 3 teams
 			elif row['Soccer Experience'] == 'NO':
 				teams = ['Dragons', 'Sharks', 'Raptors']
 				if len(dragons) == 3:
